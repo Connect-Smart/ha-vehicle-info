@@ -1,6 +1,6 @@
 import logging
 from homeassistant.core import HomeAssistant, ServiceCall
-from .vehicle import RDW  # importeer de RDW class
+from vehicle import RDW
 
 _LOGGER = logging.getLogger(__name__)
 DOMAIN = "vehicle_info"
