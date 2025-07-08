@@ -1,9 +1,8 @@
 import logging
 from homeassistant.core import HomeAssistant, ServiceCall
-from .vehicle import Vehicle
+from .vehicle import RDW  # importeer de RDW class
 
 _LOGGER = logging.getLogger(__name__)
-
 DOMAIN = "vehicle_info"
 
 async def async_setup(hass: HomeAssistant, config: dict):
@@ -14,20 +13,21 @@ async def async_setup(hass: HomeAssistant, config: dict):
             return
 
         try:
-            from vehicle import Vehicle
-            v = Vehicle(license_plate)
-            await v.async_update()
+            rdw = RDW()
+            vehicle = await rdw.vehicle(license_plate)
+            # Haal gewenste attributen op. Zie models.py in Frenck's repo voor alle beschikbare.
             data = {
-                "brand": v.brand,
-                "model": v.model,
-                "type": v.type,
-                "color": v.color,
-                "year": v.year,
-                "vin": v.vin,
+                "brand": vehicle.brand,
+                "model": vehicle.model,
+                "type": vehicle.vehicle_type,
+                "color": vehicle.primary_color,
+                "year": vehicle.year_of_manufacture,
+                "vin": vehicle.vin_number,
+                "rdw": vehicle.__dict__,  # Alles als attribuut (optioneel)
             }
             hass.states.async_set(
                 f"{DOMAIN}.{license_plate.replace('-', '').replace(' ', '').lower()}",
-                v.brand,
+                data["brand"],
                 data
             )
         except Exception as e:
