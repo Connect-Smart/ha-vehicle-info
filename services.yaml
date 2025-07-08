@@ -1,0 +1,9 @@
+get_vehicle_data:
+  name: Get vehicle data
+  description: "Haalt voertuiggegevens op voor een kenteken."
+  fields:
+    license_plate:
+      required: true
+      example: "XX999X"
+      selector:
+        text:
