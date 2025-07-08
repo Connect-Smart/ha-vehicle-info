@@ -1,5 +1,6 @@
 import logging
 from homeassistant.core import HomeAssistant, ServiceCall
+from .vehicle import Vehicle
 
 _LOGGER = logging.getLogger(__name__)
 
