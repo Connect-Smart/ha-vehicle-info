@@ -5,5 +5,3 @@ get_vehicle_data:
     license_plate:
       required: true
       example: "XX999X"
-      selector:
-        text:
