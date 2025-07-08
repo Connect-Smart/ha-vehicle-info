@@ -1,5 +1,4 @@
 import logging
-
 from homeassistant.core import HomeAssistant, ServiceCall
 
 _LOGGER = logging.getLogger(__name__)
