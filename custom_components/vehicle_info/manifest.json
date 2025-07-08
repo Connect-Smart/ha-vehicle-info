@@ -1,7 +1,7 @@
 {
   "domain": "vehicle_info",
   "name": "Vehicle Info",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "documentation": "https://github.com/Connect-Smart/ha-vehicle-info",
   "requirements": ["python-vehicle==0.4.2"],
   "dependencies": [],

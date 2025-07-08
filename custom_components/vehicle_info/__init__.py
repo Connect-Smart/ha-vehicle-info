@@ -38,4 +38,5 @@ async def async_setup(hass: HomeAssistant, config: dict):
             )
 
     hass.services.async_register(DOMAIN, "get_vehicle_data", handle_get_vehicle_data)
+    _LOGGER.error("DEBUG: vehicle_info async_setup is running!")
     return True
