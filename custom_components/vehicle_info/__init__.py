@@ -17,10 +17,11 @@ async def async_setup(hass: HomeAssistant, config: dict):
             vehicle = await rdw.vehicle(license_plate)
             # Haal gewenste attributen op. Zie models.py in Frenck's repo voor alle beschikbare.
             data = {
+                "license_plate": vehicle.license_plate,
                 "brand": vehicle.brand,
                 "model": vehicle.model,
                 "type": vehicle.vehicle_type,
-                "color": vehicle.primary_color,
+                "color": vehicle.color,
                 "year": vehicle.year_of_manufacture,
                 "vin": vehicle.vin_number,
                 "rdw": vehicle.__dict__,  # Alles als attribuut (optioneel)
